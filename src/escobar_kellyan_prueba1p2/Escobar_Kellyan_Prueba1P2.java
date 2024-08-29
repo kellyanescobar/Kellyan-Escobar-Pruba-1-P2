@@ -1,10 +1,12 @@
 package escobar_kellyan_prueba1p2;
 
 import java.util.Scanner;
+import java.util.Random;
 public class Escobar_Kellyan_Prueba1P2 {
 
     public static void main(String[] args) {
         Scanner lea =new Scanner(System.in);
+        Random ran=new Random();
         
          String ListaNombre[];
          ListaNombre=new String[20];
@@ -30,38 +32,42 @@ public class Escobar_Kellyan_Prueba1P2 {
          ListaNombre[19]="deed";
          
            
-        System.out.println("Mostrar el Listado");
+        System.out.println("Mostrar el Listado de Palbras");
 
-        for (int Fila=0; Fila < ListaNombre.length; Fila++) {
-            System.out.println("Nombre: " + ListaNombre[Fila]);
+        for (int Columna=0; Columna < ListaNombre.length; Columna++) {
+            System.out.println("Nombre: " + ListaNombre[Columna]);
         }
-        int Fila=0;
-     
-            String palabra=ListaNombre[Fila];
-            System.out.print("Palabra #" + (Fila + 1) + ": " + palabra + " - ");
-
-            boolean EsPalindromo=true;
-            int inicio=0;
-            int fin = palabra.length() - 1;
-
-            while (inicio < fin) {
-                if (palabra.charAt(inicio) !=palabra.charAt(fin)) {
-                    EsPalindromo=false;
-                    break;
-                }
-                inicio++;
-                fin--;
-            }
-
-            if (EsPalindromo) {
-                System.out.println("Es una palabra palindroma.");
-            } else {
-                System.out.println("No es una palabra palindroma.");
-            }
-        }
-    }
-
-    
-    
         
-    
+        System.out.println("Ingrese la cantidad de palabras que desea ingresar: ");
+        int Cantidad=lea.nextInt();
+       
+        String[] ArregloA=new String[Cantidad];
+        String[] ArregloB=new String[Cantidad];
+        
+        for(int Columna=0; Columna<Cantidad;Columna++){
+            ArregloA[Columna]=ListaNombre[ran.nextInt(ListaNombre.length)];
+            ArregloB[Columna]=ListaNombre[ran.nextInt(ListaNombre.length)];
+        }
+        
+        System.out.println("Lista palabras palindorma Arreglo A:");
+        for(int Columna=0;Columna<Cantidad;Columna++){
+            System.out.println("["+Columna+"]:"+ArregloA[Columna]);
+        }
+        
+        System.out.println("Lista palabras palindorma Arreglo B:");
+        for(int Columna=0;Columna<Cantidad;Columna++){
+            System.out.println("["+Columna+"]:"+ArregloB[Columna]);
+        }
+        
+        System.out.println("Palabras del Arreglo A no estan en el Arreglo B son:");
+        for (int Columna=0; Columna<Cantidad; Columna++) {
+            boolean Encontrado = false;
+            for (int Palabras=0; Palabras<Cantidad; Palabras++) {
+                if (ArregloA[Columna].equals(ArregloB[Palabras])) {
+                    Encontrado = true;
+                }
+                System.out.println(ArregloA[Columna]);
+            }
+        }
+      }
+  }
